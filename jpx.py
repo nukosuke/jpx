@@ -20,7 +20,7 @@ def convert():
     book = xlrd.open_workbook('data_j.xls')
     sheet = book.sheet_by_index(0)
     for row in range(1, sheet.nrows):
-        code = sheet.cell(row, 1).value
+        code = str(sheet.cell(row, 1).value).replace('.0', '')
         name = sheet.cell(row, 2).value
         market = sheet.cell(row, 3).value
         with open('output/{0}.json'.format(code), 'w') as f:
